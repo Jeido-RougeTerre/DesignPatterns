@@ -1,17 +1,18 @@
 package com.jeido.exercises.exercise1;
 
-import java.util.HashMap;
 import java.util.Map;
 
 public class ConfigurationManager {
     private static ConfigurationManager instance;
-    private static final Map<String,String> CONFIGURATIONS = new HashMap<>();
+    private static Map<String,String> configurations;
 
     private ConfigurationManager() {
         //TODO read from a file
-        CONFIGURATIONS.put("db.host", "localhost");
-        CONFIGURATIONS.put("db.port", "5432");
-        CONFIGURATIONS.put("app.name", "MyApplication");
+        loadConfigurations(Map.of(
+                "db.host", "localhost",
+                "db.port", "5432",
+                "app.name", "MyApplication"
+        ));
     }
 
     public static ConfigurationManager getInstance() {
@@ -22,10 +23,16 @@ public class ConfigurationManager {
     }
 
     public String getConfiguration(String key) {
-        return CONFIGURATIONS.get(key);
+        return configurations.getOrDefault(key, "Key not found!");
     }
-    
+
     public String listConfigurations() {
-        return CONFIGURATIONS.toString();
+        return configurations.toString();
+    }
+
+    public void loadConfigurations(Map<String,String> config) {
+        if (configurations == null) {
+            configurations = config;
+        }
     }
 }
