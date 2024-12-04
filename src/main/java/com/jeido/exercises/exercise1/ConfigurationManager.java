@@ -6,14 +6,7 @@ public class ConfigurationManager {
     private static ConfigurationManager instance;
     private static Map<String,String> configurations;
 
-    private ConfigurationManager() {
-        //TODO read from a file
-        loadConfigurations(Map.of(
-                "db.host", "localhost",
-                "db.port", "5432",
-                "app.name", "MyApplication"
-        ));
-    }
+    private ConfigurationManager() {}
 
     public static ConfigurationManager getInstance() {
         if (instance == null) {
