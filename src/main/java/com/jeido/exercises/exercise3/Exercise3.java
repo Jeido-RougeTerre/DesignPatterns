@@ -1,21 +1,23 @@
 package com.jeido.exercises.exercise3;
 
+import com.jeido.exercises.exercise3.event.EventListener;
 import com.jeido.exercises.exercise3.listener.ToFileListener;
+import com.jeido.exercises.exercise3.listener.ToJsonListener;
 
 public class Exercise3 {
     public static void start() {
-        ToFileListener tfl1 = new ToFileListener("ToFile1.txt");
-        ToFileListener tfl2 = new ToFileListener("ToFile2.txt");
-        ToFileListener tfl3 = new ToFileListener("ToFile3.txt");
+        EventListener file1 = new ToFileListener("file1");
+        EventListener file2 = new ToFileListener("file2");
+        EventListener file3 = new ToJsonListener("file3");
 
         EventManager em = new EventManager();
         System.out.println("Adding 2/3 events ...");
-        em.addEventListener(tfl1);
-        em.addEventListener(tfl2);
+        em.addEventListener(file1);
+        em.addEventListener(file2);
         System.out.println("Notify All");
         em.notifyAllEvents("Start");
         System.out.println("adding 3/3 events ...");
-        em.addEventListener(tfl3);
+        em.addEventListener(file3);
         System.out.println("Notify All");
         em.notifyAllEvents("Ping");
 
