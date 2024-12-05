@@ -41,7 +41,7 @@ public class Exercise6 {
         //decorate
         Toy decoratedWoodToy = new StripeToyDecorator(woodToy);
         decoratedWoodToy.paint("Red");
-        Toy decoratedTinToy = new StripeToyDecorator(tinToy);
+        Toy decoratedTinToy = new CheckeredToyDecorator(tinToy);
         decoratedTinToy.paint("Blue");
     }
 }

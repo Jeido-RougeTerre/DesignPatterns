@@ -18,7 +18,7 @@ public class ElfWoodToyListener implements ToyListener {
     @Override
     public void onBuild(Toy toy) {
         if (toy instanceof WoodToy) {
-            System.out.println("Send to Elf '" + getElfName() + "' : a WoodToy has been build!");
+            System.out.println("Send to Elf '" + getElfName() + "' : a WoodToy has been build !");
         }
     }
 
