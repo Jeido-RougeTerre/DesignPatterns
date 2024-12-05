@@ -11,11 +11,13 @@ public class Exercise3 {
         EventListener file3 = new ToJsonListener("file3");
 
         EventManager em = new EventManager();
+
         System.out.println("Adding 2/3 events ...");
         em.addEventListener(file1);
         em.addEventListener(file2);
         System.out.println("Notify All");
         em.notifyAllEvents("Start");
+
         System.out.println("adding 3/3 events ...");
         em.addEventListener(file3);
         System.out.println("Notify All");
