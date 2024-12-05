@@ -1,5 +1,6 @@
 package com.jeido.exercises;
 
+import java.io.File;
 import java.io.IOException;
 import java.util.*;
 
@@ -16,7 +17,16 @@ public class ExerciseManager {
 
     private ExerciseManager() {
         exercises = new HashMap<>();
-        Package.getPackages();
+        String path = ("src.main.java." + ExerciseBase.class.getPackage().getName()).replace(".", File.separator);
+        File file = new File(path);
+        List<String> dirs = Arrays.stream(Objects.requireNonNull(file.list())).filter(s -> s.matches("^exercise[0-9]+$")).toList();
+        dirs.forEach(dir -> {
+            File f = new File(path + File.separator + dir);
+            if(f.exists() && f.isDirectory()) {
+                List<String> contents = Arrays.asList(Objects.requireNonNull(f.list()));
+                contents.stream().filter(c -> c.matches("^Exercise[0-9]+[.]java+$")).forEach(System.out::println);
+            }
+        });
     }
 
     public List<ExerciseBase> getExercises() {
