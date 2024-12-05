@@ -1,13 +1,19 @@
 package com.jeido.exercises.exercise1;
 
+import com.jeido.exercises.ExerciseBase;
+
 import java.io.File;
 import java.io.IOException;
 import java.util.HashMap;
 import java.util.Map;
 import java.util.Scanner;
 
-public class Exercise1 {
-    public static void start() {
+public class Exercise1 extends ExerciseBase {
+    public Exercise1() {
+        super("Singleton - Configuration Manager", 1);
+    }
+
+    public void start() {
         System.out.println("Instantiating ConfigurationManager...");
         ConfigurationManager cm = ConfigurationManager.getInstance();
 
