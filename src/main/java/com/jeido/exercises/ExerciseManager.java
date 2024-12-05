@@ -1,8 +1,7 @@
 package com.jeido.exercises;
 
-import java.util.HashMap;
-import java.util.List;
-import java.util.Map;
+import java.io.IOException;
+import java.util.*;
 
 public class ExerciseManager {
     private static ExerciseManager instance;
@@ -17,16 +16,26 @@ public class ExerciseManager {
 
     private ExerciseManager() {
         exercises = new HashMap<>();
-        //TODO automatic fetcher
+        Package.getPackages();
     }
 
-    public static List<ExerciseBase> getExercises() {
+    public List<ExerciseBase> getExercises() {
         return exercises.values().stream().toList();
     }
 
-    public static void start(int number) {
+    public List<Integer> getExerciseNumbers() {return exercises.keySet().stream().toList();}
+
+    public void start(int number) {
         if (exercises.containsKey(number)) {
             exercises.get(number).start();
         }
     }
+
+    public void addExercise(ExerciseBase exercise) {
+        if (exercises.containsKey(exercise.getNumber())) return;
+
+        exercises.put(exercise.getNumber(), exercise);
+    }
+
+
 }
