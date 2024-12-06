@@ -6,6 +6,7 @@ import com.jeido.exercises.exercise2.Exercise2;
 import com.jeido.exercises.exercise3.Exercise3;
 import com.jeido.exercises.exercise4.Exercise4;
 import com.jeido.exercises.exercise5.Exercise5;
+import com.jeido.exercises.exercise6.Exercise6;
 
 public class Main {
     public static void main(String[] args) {
@@ -19,5 +20,7 @@ public class Main {
         Exercise4.start();
         System.out.println("Exercise 5");
         Exercise5.start();
+        System.out.println("Exercise 6");
+        Exercise6.start();
     }
 }
