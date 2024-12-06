@@ -48,13 +48,14 @@ public class ExerciseLogger {
                     return;
                 }
 
-                if (choice < 0 || choice >= exerciseManager.getExercises().size()) {
+                if (choice < 1 || choice > exerciseManager.getExercises().size()) {
                     System.out.println("Invalid exercise number [1-" + exerciseManager.getExercises().size() + "]");
-                }
+                } else {
 
-                exerciseManager.start(choice - 1);
-                System.out.print("End of Exercise " + choice + " (Press RETURN to continue)");
-                String _a = scanner.nextLine();
+                    exerciseManager.start(choice - 1);
+                    System.out.print("End of Exercise " + choice + " (Press RETURN to continue)");
+                    String _a = scanner.nextLine();
+                }
             } catch (NumberFormatException e) {
                 System.out.println("Invalid exercise number");
             }
