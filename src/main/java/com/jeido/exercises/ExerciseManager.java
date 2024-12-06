@@ -27,7 +27,19 @@ public class ExerciseManager {
         for (int i = 1; i <= count; i++) {
             try {
                 Class<?> exerciseClass = Class.forName( p +  ".exercise" + i + ".Exercise" + i);
-                exercises.add(new ExerciseBase(i, "Exercise " + i, exerciseClass.getDeclaredMethod("start")));
+
+                String exerciseName = "Exercise " + i;
+                String readmePath = path + File.separator + "exercise" + i + File.separator + "README.md";
+                File readme = new File(readmePath);
+                if (readme.exists()) {
+                    Scanner scanner = new Scanner(readme);
+                    scanner.useDelimiter("\n");
+                    String line1 = scanner.next();
+                    scanner.close();
+                    exerciseName = line1.replace("#", "").trim();
+                }
+
+                exercises.add(new ExerciseBase(i, exerciseName, exerciseClass.getDeclaredMethod("start")));
 
 
             } catch (Exception e) {

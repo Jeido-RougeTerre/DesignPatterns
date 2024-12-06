@@ -24,6 +24,11 @@ public class ExerciseLogger {
     }
 
     public void menu() {
+        if (exerciseManager.getExercises().isEmpty()) {
+            System.out.println("No exercises found");
+            return;
+        }
+
         while (true) {
             StringBuilder sb = new StringBuilder();
             sb.append("== Choose an Exercise ==\n");
@@ -41,6 +46,10 @@ public class ExerciseLogger {
                     scanner.close();
                     System.out.println("Goodbye");
                     return;
+                }
+
+                if (choice < 0 || choice >= exerciseManager.getExercises().size()) {
+                    System.out.println("Invalid exercise number [1-" + exerciseManager.getExercises().size() + "]");
                 }
 
                 exerciseManager.start(choice - 1);
